@@ -474,6 +474,7 @@ public function delete($id)
 ```
 
 ### View
+
 Bagian/Halaman view digunakan untuk mengatur tampilan bagi pengguna. Pada bagian ini pengguna akan berinteraksi dengan projek aplikasi yang dibuat seperti membaca data produk, kategori dan status serta mengubah dan menghapus. Pada framework `Codeigniter 3` bagian view terdapat pada direktori `/application/views/`. Pada project ini hanya ada 1 halaman view dengan nama `welcome_message.php`.
 
 Berikut merupakan potongan kode yang ada pada halaman view.
@@ -683,6 +684,7 @@ $('#save-produk').click(function(){
 ```
 
 * **Tombol Edit dan Hapus**
+
 Tombol `Edit` akan memanggil fungsi `jquery` untuk menampilkan form edit data. Form tersebut akan menampilkan detail data yang akan diedit sehingga akan memudahkan pengguna untuk mengubah data yang sudah ada. Berikut potongan kode tersebut.
 
 **kode fungsi jquery menampilkan form edit**
@@ -784,6 +786,7 @@ $('#btdelete').click(function() {
 ```
 
 * **Clear Form Input**
+
 Pada halaman view `welcome_message` juga terdapat potongan kode untuk membersihkan form input dari pesan error maupun data yang sebelumnya telah ditampilkan (ketika melakukan edit data). Berikut potongan kode `clearForm()`.
 ```
 function cleanForm(){
@@ -803,9 +806,11 @@ function cleanForm(){
 ```
 
 ### Controller
+
 Controller merupakan bagian yang menjembatani antara `model` dan `view`. bagian ini digunakan untuk membuat _method_ yang akan menjembatani bagian `view` dalam mengelola data melalui bagian `model`. Pada projek ini ada 2 contoller yakni `Welcome.php` dan `Migration.php`.
 
 **1. Migration.php**
+
 Pada controller ini hanya terdapat 1 _method_ yakni _method_ `index()` yang mana digunakan untuk melakukan proses migrasi dari file migrasi yang ada pada direktori `/application/migrations`. Berikut potongan kode pada _method_ `index()`.
 ```
 public function index() { 
@@ -821,9 +826,11 @@ public function index() {
 ```
 
 **2. Welcome.php**
+
 Controller ini digunakan untuk menjembatani pengolahan data produk. selain itu controller ini diatur sebagai controller _default_ yang akan dipanggil pertama kali ketika `base url` dijalankan. Ada beberapa _method_ pada controller ini yakni :
 
 * **index()**
+
 _Method_ ini akan dipanggil secara otomatis ketika kita menjalankan/memanggil controller `Welcome.php`. _method_ ini digunakan untuk menampilkan halaman 'welcome_message.php` serta memanggil data produk beserta relasi data status dan data kategori yang kemudian akan dikirimkan menuju halaman `welcome_message.php`. Berikut potongan kode pada _method_ `index()`.
 ```
 public function index()
@@ -893,6 +900,7 @@ public function index()
 Selain itu pada _mothod_ `index()` juga terdapat konfigurasi untuk paginasi data produk yang akan ditampilkan.
 
 * **singkronisasi()**
+
 _Method_ ini digunakan untuk melakukan proses singkronisasi produk dari api. Pada _method_ pula dilakukan _generate_ username dan password untuk pengambilan data api. setelah data produk dari api didapatkan, maka selanjutnya data tersebut akan _dimapping_ dan dikelompokkan menjadi data kategori, data status dan data produk. setelah itu _method_ `singkronisasi()` akan memanggil fungsi pada model untuk melakukan penyimpanan data. Berikut potongan kode pada _method_ `singkronisasi()`.
 ```
 public function singkronisasi(){
@@ -943,6 +951,7 @@ public function singkronisasi(){
 ```
 
 * **insert()**
+
 _Method_ `insert()` digunakan untuk proses penyimpanan data dimana method ini akan memanggil fungsi `rules()` pada model `Produk_model` untuk memvalidasi data yang dikirimkan. Apabila data tersebut tidak sesuai, maka _method_ ini akan mengembalikan pesan error dari proses validasi tersebut. Apabila data yang dikirimkan sesuai dengan rules validasi, maka selanjutnya _method_ `insert()` akan memanggil fungsi `save()` pada model `Produk_model` untuk menyimpan data produk. Berikut potongan kode pada _method_ `insert()`.
 ```
 public function insert(){
@@ -969,6 +978,7 @@ public function insert(){
 ```
 
 * **update()**
+
 _Method_ `update()` memliki alur yang hampir sama dengan _method_ `insert()`. Dimana _method_ ini akan melakukan validasi data yang dikirimkan. Apabila data yang dikirmkan sesuai dengan rule makan akan disimpan, dan apabila data tidak sesuai dengan rule validasi makan _method_ akan mengembalikan pesan error dari proses validasi tersebut. Berikut potongan kode pada _method_ `update()`.
 ```
 public function update(){
@@ -996,6 +1006,7 @@ public function update(){
 ```
 
 * **findProduk()**
+
 _Method_ `findProduk()` digunakan untuk memanggil fungsi `getById()` pada model `Produk_model` yang mana fungsi tersebut akan mengambil sebuah data produk berdasarkan `id_produk` yang dikirimkan. _Method_ ini dipanggil untuk menampilkan data produk sebelum data tersebut diubah pada halaman `welcome_message.php`. Berikut potongan kode pada _method_ `findProduk()`.
 ```
 public function findProduck(){
@@ -1008,6 +1019,7 @@ public function findProduck(){
 ```
 
 * **delete()**
+
 _Method_ `delete()` digunakan untuk memanggil fungsi `delete()` pada model `Produk_model` yang berfungsi untuk menghapus data produk. _Method_ ini akan menerima data `id_produk` yang dikirimkan dan kemudian _method_ `delete()` akan memanggil fungs `delete()` pada model `Produk_model` untuk menghapus data tersebut. Berikut potongan kode pada _method_ `delete()`.
 ```
 public function delete()
@@ -1036,7 +1048,9 @@ public function delete()
 	}
 }
 ```
+
 ### Kontak
+
 Apabila ada pertanyaan mengenai projek ini bisa hubungi saya pada kontak dibawah ini.
 
 * ramaera321@gmail.com
