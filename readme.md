@@ -3,6 +3,7 @@
 
 Aplikasi CRUD Produk dibuat dan dikembangkan untuk melakukan proses CRUD data produk baik dari API maupun secara manual. Aplikasi ini dibangun menggunakan framework Codeigniter 3 serta beberapa library tambahan seperti Bootstrap untuk mempercantik tampilan aplikasi website dan sweetalert 2 untuk menampilkan pesan ketika melakukan proses CRUD data.
 
+
 ## Fitur
 
 ![My Image](https://github.com/ramaera321/CRUD-Produk-Codeigniter-3/blob/master/image1.jpg)
@@ -11,25 +12,32 @@ Aplikasi CRUD Produk dibuat dan dikembangkan untuk melakukan proses CRUD data pr
   
 Fitur ini dibuat untuk menyingkronkan data produk, kategori dan status yang diambil dari data api. Kemudian data tersebut dimasukkan kedalam tabel sesuai dengan data yang telah diambil. Fitur ini bisa digunakan dengan menekan tombol `Singkronisasi` pada bagian kanan atas disebelah tombol tambah data.
 
+
 *  **Memasukkan/membuat data (create data)**
 
 Fitur ini dibuat untuk menambahkan data produk baru ke dalam database. Data yang ditambahakn harus memiliki Nama Produk, Kategori, Status dan Harga. Selain itu data Harga yang dimasukkan harus berupa angka, bukan character atau huruf. Fitur ini bisa digunakan dengan menekan tombol `Tambah Data` pada kanan atas, kemudian akan muncul `form input` untuk memasukkan data produk. Selanjutnya klik tombol `Save` untuk menyimpan data tersebut.
+
 
 *  **Menampilkan/membaca data (read data)**
   
 Fitur ini digunakan untuk menampilkan semua data produk yang telah dimasukkan ke dalam database. Data yang telah dimasukkan akan ditampulkan pada sebuah tabel data dimana data Nama Produk, Kategori, Harga dan Status akan ditampilkan pada tabel tersebut. Pada aplikasi ini, hanya data yang memiliki status bisa dibaca yang ditampilkan.
 
+
 *  **Mengubah data (update data)**
   
 Fitur ini digunakan untuk mengubah data produk di database. Data yang telah dimasukkan sebelumnya bisa diedit kembali apabila dirasa data tersebut mengalami perubahan data atau ada data yang tidak sesuai. Fitur ini bisa digunakan dengan menekan tombol `Edit` pada kolom aksi di bagian kanan setiap data yang ditampilkan. Kemudian akan muncul `form data` yang berisi data produk tersebut dan bisa diubah dengan data yang baru.
+
 
 *  **Menghapus data (delete data)**
   
 Fitur ini digunakan untuk menghapus data produk di database. Data yang tidak dibutuhkan bisa dihapus menggunakan fitur ini. Fitur ini bisa digunakan dengan menekan tombol `Hapus` pada kolom aksi di bagian kanan setiap data yang ditampilkan. Kemudian akan muncul `modal peringatan` untuk mengkonfirmasi aksi penghapusan data tersebut.
 
+
 *  **Paginasi data (pagination)**
   
 Fitur pagination digunakan untuk membagi data yang ditampilkan sehingga lebih rapi dan mudah dibaca. fitur ini berada di bawah tabel data. Anda bisa berpindah halaman untuk untuk melihat data yang lain dengan menekan tombol halaman tersebut.
+
+
 
 ## Instalasi
 ### Clone Project
@@ -38,6 +46,7 @@ Silakan _clone_ aplikasi `CRUD Produk` pada repository github ini. Bisa mendownl
 git clone https://github.com/ramaera321/CRUD-Produk-Codeigniter-3.git
 ```
 Setelah itu jalankan aplikasi `web server` yang anda gunakan untuk menjalankan project aplikasi `CRUD Produk` ini. Saya menggunakan aplikasi `web server` **Xampp Apache** untuk menjalankan aplikasi ini.
+
 
 ### Konfigurasi
 Setelah project selesai diunduh(_clone_), selanjutnya perlu dilakukan penyesuaian/konfigurasi pada file `config.php` dan `database.php` pada folder `application/config/`.
@@ -75,6 +84,7 @@ $db['default'] = array(
 
 Setelah proses konfigurasi selesai, kemudian buat database menggunakan nama yang anda gunakan pada konfigurasi database sebelumnya. jika disamakan dengan konfigurasi bawaan project, maka silakan membuat database dengan nama `db_produk_api` menggunakan database `PostgreSQL`.
 
+
 ### Migrasi Tabel
 Setelah proses konfigurasi dan pembuatan database telah selesai, selanjutnya lakukan proses migrasi tabel database dengan menjalankan `url` dibawah ini. sesuaikan `base url` yang anda gunakan, kemudian tambahkan url `/migration` dibelakangnya.
 ```
@@ -82,17 +92,21 @@ http://localhost:8080/CRUD-Produk-Codeigniter-3/migration
 ```
 Setelah proses migrasi berhasil, pastikan pada database yang anda gunakan terdapat tabel `produk`, `kategori` dan `status`. jika tidak ada, silakan cek konfigurasi database anda kemudian jalankan perintah/url tersebut kembali.
 
+
 ### Run Project
 Setelah proses migrasi telah selesai, anda bisa menjalankan aplikasi ini dengan mengakses `base url` yang sudah anda buat sebelumnya. jika menggunakan konfigurasi default/ konfigurasi awal project, anda bisa menjalankan `url` dibawah ini.
 ```
 http://localhost:8080/CRUD-Produk-Codeigniter-3/
 ```
 
+
+
 ## Kode dan Program
 ### Migrasi Tabel
 Setiap data yang digunakan pada project ini disimpan pada sebuah database yang didalamnya terdapat beberapa tabel data untuk menyimpan data berdasarkan kategori data tersebut. Untuk membuat tabel data, project ini menggunakan fitur `migrasi` pada framework `Codeigniter 3` sehingga tidak perlu membuat data tabel secara manual.
 
 Kode program untuk melakukan migrasi disimpan pada direktori `/application/migrations/`, pada direktori tersebut terdapat 3 file migrasi yaitu :
+
 * **001_status.php**
 
 Pada file ini terdapat class `Migration_Status` yang memiliki _method_ `up()`. _Method_ tersebut digunakan untuk membuat sebuah tabel status yang memiliki kolom `id_status` dan `nama_status`. Berikut _code_ yang terdapat pada class `Migration_Status`.
@@ -126,6 +140,7 @@ class Migration_Status extends CI_Migration {
     }
 }
 ```
+
 
 * **002_kategori.php**
 
@@ -161,7 +176,8 @@ class Migration_Kategori extends CI_Migration {
 }
 ```
 
-* **002_produk.php**
+
+* **003_produk.php**
 
 Pada file ini terdapat class `Migration_Produk` yang memiliki _method_ `up()`. _Method_ tersebut digunakan untuk membuat sebuah tabel status yang memiliki kolom `id_produk`, `nama_produk`, `harga`, `kategori_id` dan `status_id`. Berikut _code_ yang terdapat pada class `Migration_Produk`.
 ```
@@ -209,8 +225,10 @@ class Migration_Produk extends CI_Migration {
 }
 ```
 
+
 ### Model
 File model berisikan class model yang mempresentasikan sebuah data yang akan disimpan pada sebuah tabel. Class model biasanya digunakan untuk mengelola data yang akan disimpan pada sebuah tabel pada database seperti proses `menyimpan`, `membaca`, `mengubah` serta `menghapus` data. Dengan adanya class model ini, kita akan lebih mudah melakukan pengelolaan data pada sebuah tabel. Biasanya model dibuat sesuai dengan tabel yang dibuat pada database. Berikut model yang dibuat pada projek ini :
+
 **1. Status_model.php**
 
 Class `Status_model` digunakan untuk mengelola data status yang didapatkan dari `api`. pada class tersebut memiliki beberapa _method_ seperti _method_ `getAll()` untuk mengambil semua data status, _method_ `saveBatch` untuk menyimpan beberapa data status (multiple data). Berikut _code_ yang ada pada class `Status_model`.
@@ -241,6 +259,7 @@ class Status_model extends CI_Model{
 
 }
 ```
+
   
 **2. Kategori_model.php**
 
@@ -272,6 +291,7 @@ class Kategori_model extends CI_Model{
 
 }
 ```
+
 
 **3. Produk_model.php**
 
@@ -308,6 +328,7 @@ public function rules()
     }
 ```
 
+
 * **getById()**
 
 Digunakan untuk mengambil data produk berdasarkan data `id_produk` tertentu.
@@ -322,6 +343,7 @@ public function getById($id){
         return $this->db->get()->row();
     }
 ```
+
 
 * **apiSave()**
 
@@ -355,6 +377,7 @@ public function apiSave($data, $data_id){
     }
 ```
 
+
 * **saveBatch()**
 
 Digunakan untuk menyimpan beberapa data produk (multiple data). _Method_ ini pula yang dipanggil pada _method_ `saveApi()` untuk digunakan menyimpan beberapa data yang diambil dari api. Selain itu pada _method_ ini juga terdapat baris kode untuk menyimpan data produk pada session.
@@ -373,6 +396,7 @@ public function saveBatch($data)
         }
     }
 ```
+
 
 * **getWithJoinTable()**
 
@@ -397,6 +421,7 @@ public function getWithJoinTable($select, array $table_join, $limit = null, $sta
     }
 ```
 
+
 * **getAll()**
 
 Digunakan untuk mengambil semua data produk tanpa relasi data.
@@ -408,6 +433,7 @@ public function getAll(){
         return $query->result();
     }
 ```
+
 
 * **save()**
 
@@ -447,6 +473,7 @@ public function save()
     }
 ```
 
+
 * **update()**
 
 Digunakan untuk mengubah data produk yang telah ada sebelumnya.
@@ -463,6 +490,7 @@ public function update()
     }
 ```
 
+
 * **delete()**
 
 Digunakan untuk menghapus data produk berdasarkan `id_produk` tertentu yang tidak diperlukan lagi.
@@ -472,6 +500,8 @@ public function delete($id)
         return $this->db->delete($this->table, array("id_produk" => $id));
     }
 ```
+
+
 
 ### View
 
@@ -522,6 +552,7 @@ Berikut merupakan potongan kode yang ada pada halaman view.
 ```
 
 Pada bagian ini data produk yang ada pada tabel produk akan ditampilkan menggunakan tabel data. Data yang diambil akan di _mapping_ menggunakan perintah `foreach` pada setiap baris tabel data. pada tabel ini pula terdapat tombol untuk melakukan pengubahan data produk dan penghapusan data produk.
+
 
 * **Singkronisasi dan Tambah Data**
 ```
@@ -683,6 +714,7 @@ $('#save-produk').click(function(){
 });
 ```
 
+
 * **Tombol Edit dan Hapus**
 
 Tombol `Edit` akan memanggil fungsi `jquery` untuk menampilkan form edit data. Form tersebut akan menampilkan detail data yang akan diedit sehingga akan memudahkan pengguna untuk mengubah data yang sudah ada. Berikut potongan kode tersebut.
@@ -785,6 +817,7 @@ $('#btdelete').click(function() {
 });
 ```
 
+
 * **Clear Form Input**
 
 Pada halaman view `welcome_message` juga terdapat potongan kode untuk membersihkan form input dari pesan error maupun data yang sebelumnya telah ditampilkan (ketika melakukan edit data). Berikut potongan kode `clearForm()`.
@@ -805,6 +838,8 @@ function cleanForm(){
 }
 ```
 
+
+
 ### Controller
 
 Controller merupakan bagian yang menjembatani antara `model` dan `view`. bagian ini digunakan untuk membuat _method_ yang akan menjembatani bagian `view` dalam mengelola data melalui bagian `model`. Pada projek ini ada 2 contoller yakni `Welcome.php` dan `Migration.php`.
@@ -824,6 +859,7 @@ public function index() {
         }
     }
 ```
+
 
 **2. Welcome.php**
 
@@ -899,6 +935,7 @@ public function index()
 
 Selain itu pada _mothod_ `index()` juga terdapat konfigurasi untuk paginasi data produk yang akan ditampilkan.
 
+
 * **singkronisasi()**
 
 _Method_ ini digunakan untuk melakukan proses singkronisasi produk dari api. Pada _method_ pula dilakukan _generate_ username dan password untuk pengambilan data api. setelah data produk dari api didapatkan, maka selanjutnya data tersebut akan _dimapping_ dan dikelompokkan menjadi data kategori, data status dan data produk. setelah itu _method_ `singkronisasi()` akan memanggil fungsi pada model untuk melakukan penyimpanan data. Berikut potongan kode pada _method_ `singkronisasi()`.
@@ -950,6 +987,7 @@ public function singkronisasi(){
 }
 ```
 
+
 * **insert()**
 
 _Method_ `insert()` digunakan untuk proses penyimpanan data dimana method ini akan memanggil fungsi `rules()` pada model `Produk_model` untuk memvalidasi data yang dikirimkan. Apabila data tersebut tidak sesuai, maka _method_ ini akan mengembalikan pesan error dari proses validasi tersebut. Apabila data yang dikirimkan sesuai dengan rules validasi, maka selanjutnya _method_ `insert()` akan memanggil fungsi `save()` pada model `Produk_model` untuk menyimpan data produk. Berikut potongan kode pada _method_ `insert()`.
@@ -976,6 +1014,7 @@ public function insert(){
 	}
 }
 ```
+
 
 * **update()**
 
@@ -1005,6 +1044,7 @@ public function update(){
 }
 ```
 
+
 * **findProduk()**
 
 _Method_ `findProduk()` digunakan untuk memanggil fungsi `getById()` pada model `Produk_model` yang mana fungsi tersebut akan mengambil sebuah data produk berdasarkan `id_produk` yang dikirimkan. _Method_ ini dipanggil untuk menampilkan data produk sebelum data tersebut diubah pada halaman `welcome_message.php`. Berikut potongan kode pada _method_ `findProduk()`.
@@ -1017,6 +1057,7 @@ public function findProduck(){
 	$this->output->set_output(json_encode($data));
 }
 ```
+
 
 * **delete()**
 
@@ -1048,6 +1089,8 @@ public function delete()
 	}
 }
 ```
+
+
 
 ### Kontak
 
