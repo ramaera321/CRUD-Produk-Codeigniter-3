@@ -1036,5 +1036,8 @@ public function delete()
 	}
 }
 ```
+### Kontak
+Apabila ada pertanyaan mengenai projek ini bisa hubungi saya pada kontak dibawah ini.
 
+* ramaera321@gmail.com
 
